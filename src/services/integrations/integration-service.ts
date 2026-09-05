@@ -111,8 +111,8 @@ export async function getAllIntegrationsStatus(userId: string) {
     },
   ];
 
-  return providers.map((p) => {
-    const found = userIntegrations.find((u) => u.provider === p.id);
+return providers.map((p) => {
+     const found = userIntegrations.find((u: { provider: string }) => u.provider === p.id);
     const envToken =
       p.id === "todoist"
         ? envTodoistToken
