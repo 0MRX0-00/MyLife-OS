@@ -3,17 +3,20 @@
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider, type ThemeProviderProps } from "next-themes";
 
+const emptySubscribe = () => () => {};
+
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  const [mounted, setMounted] = React.useState(false);
+  const isServer = React.useSyncExternalStore(
+    emptySubscribe,
+    () => false,
+    () => true
+  );
 
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
+  if (isServer) {
     return <>{children}</>;
   }
 
   return <NextThemesProvider enableSystem={false} {...props}>{children}</NextThemesProvider>;
 }
+
 
