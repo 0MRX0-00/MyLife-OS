@@ -41,7 +41,7 @@ export async function getDashboardData(userId: string, targetDateStr?: string) {
   // Compute Habits Stats
   const completedHabits = habits.filter((h) => h.isCompletedToday).length;
   const totalHabits = habits.length;
-  const habitCompletionRate = totalHabits > 0 ? Math.round((completedHabits / totalHabits) * 100) : 100;
+  const habitCompletionRate = totalHabits > 0 ? Math.round((completedHabits / totalHabits) * 100) : 0;
 
   // Compute Tasks Stats
   const pendingTasksCount = tasks.length;
