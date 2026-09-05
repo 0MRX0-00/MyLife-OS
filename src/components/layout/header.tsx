@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/providers/theme-provider";
 import { Search, Sun, Moon } from "lucide-react";
 import { useRouter } from "next/navigation";
 
